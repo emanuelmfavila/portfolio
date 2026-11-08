@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emanuel Avila · Desenvolvedor Full Stack</title>
+<meta property="og:image" content="img/emanuel.jpg">
+<meta name="description" content="Emanuel Avila, desenvolvedor full stack: TypeScript, Node.js (NestJS), Python e PostgreSQL. Sistemas, integrações e automações em produção.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5; --surface:#ffffff; --text:#1b1d22; --muted:#5d6470; --line:#e4e4e0;
+  --accent:#1f6feb; --accent-soft:#e8f0fe; --chip:#eef1f4; --chip-text:#2d3440;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1116; --surface:#151a21; --text:#e6e8eb; --muted:#9aa3ae; --line:#252c36;
+    --accent:#6ea8ff; --accent-soft:#16233a; --chip:#1d2430; --chip-text:#c9d1db;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --surface:#151a21; --text:#e6e8eb; --muted:#9aa3ae; --line:#252c36;
+  --accent:#6ea8ff; --accent-soft:#16233a; --chip:#1d2430; --chip-text:#c9d1db;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:400px minmax(0,1fr);gap:64px}
+header.side{position:sticky;top:0;height:100vh;padding:80px 0 48px;display:flex;flex-direction:column}
+.avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line),0 8px 24px rgba(0,0,0,.18);margin-bottom:22px}
+h1{font-size:42px;line-height:1.1;margin:0;letter-spacing:-.02em}
+.role{font-size:20px;font-weight:600;margin:12px 0 0}
+.pitch{color:var(--muted);max-width:340px;margin:16px 0 0}
+nav.toc{margin-top:48px;display:flex;flex-direction:column;gap:14px}
+nav.toc a{color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+nav.toc a::before{content:"";width:32px;height:1px;background:var(--muted);transition:width .2s}
+nav.toc a:hover,nav.toc a.on{color:var(--text);text-decoration:none}
+nav.toc a:hover::before,nav.toc a.on::before{width:64px;background:var(--text)}
+.links{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px}
+.tools{display:flex;gap:8px;margin-top:20px}
+.tools button{font:600 12px Inter,sans-serif;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer}
+main{padding:80px 0 96px;min-width:0}
+section{margin-bottom:96px;scroll-margin-top:40px}
+h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 24px}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.stat b{display:block;font-size:26px;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+.job{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0}
+.when{font:500 13px "JetBrains Mono",monospace;color:var(--muted);padding-top:3px}
+.job h3,.case h3{margin:0;font-size:17px}
+.job h3 small{font-weight:500;color:var(--muted)}
+.job ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+.job li{margin-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chips span{font:500 12px "JetBrains Mono",monospace;background:var(--chip);color:var(--chip-text);border-radius:999px;padding:3px 10px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:16px;margin-bottom:22px;overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s}
+.case:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.case .shot{display:block;aspect-ratio:16/9;background:#0e1116;border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.case .shot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+.case .shot figcaption{position:absolute;right:10px;bottom:10px;font:500 11px "JetBrains Mono",monospace;color:#c9d1db;background:rgba(14,17,22,.75);border-radius:6px;padding:3px 8px}
+.case .body{padding:22px 24px 24px}
+.small-shots{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.small-shots .case .grid{grid-template-columns:1fr}
+.case .tag{font:600 11px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 8px;display:inline-block;margin-bottom:10px}
+.case .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.case .grid h4{margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case .grid p{font-size:14.5px;margin:0}
+.case .foot{margin-top:14px;font-size:14px;display:flex;flex-wrap:wrap;gap:16px}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px}
+.contact a.btn{display:inline-block;margin-top:8px;background:var(--accent);color:#fff;border-radius:10px;padding:10px 18px;font-weight:600}
+[data-l="en"]{display:none}
+html[lang="en"] [data-l="pt"]{display:none}
+html[lang="en"] [data-l="en"]{display:revert}
+.gallery{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}
+.gallery h4{margin:0 0 4px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.gallery .hint{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gal button{all:unset;cursor:zoom-in;display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg);transition:border-color .15s}
+.gal button:hover,.gal button:focus-visible{border-color:var(--accent)}
+.gal img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:top left}
+.gal b{display:block;font-size:13.5px;padding:8px 10px 0}
+.gal small{display:block;font-size:12.5px;color:var(--muted);padding:2px 10px 10px;line-height:1.45}
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(1200px,94vw)}
+dialog.lb::backdrop{background:rgba(5,8,12,.85)}
+dialog.lb img{display:block;max-width:100%;max-height:86vh;border-radius:10px}
+dialog.lb p{color:#e6e8eb;text-align:center;margin:10px 0 0;font-size:14px}
+@media (max-width:960px){.gal{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:960px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:0;padding:0 16px}
+  header.side{position:static;height:auto;padding:48px 0 8px}
+  nav.toc{display:none}
+  .links{margin-top:24px}
+  main{padding-top:40px}
+  .case .grid,.stats{grid-template-columns:minmax(0,1fr)}
+  .job{grid-template-columns:minmax(0,1fr);gap:4px}
+  h1{font-size:34px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="side">
+  <img class="avatar" src="img/emanuel.jpg" alt="Foto de Emanuel Avila" width="112" height="112">
+  <h1>Emanuel Avila</h1>
+  <p class="role"><span data-l="pt">Desenvolvedor Full Stack</span><span data-l="en">Full Stack Developer</span></p>
+  <p class="pitch" data-l="pt">Construo sistemas, integrações e automações que tiram trabalho manual da operação. TypeScript, Node.js, Python e PostgreSQL.</p>
+  <p class="pitch" data-l="en">I build systems, integrations and automations that remove manual work from operations. TypeScript, Node.js, Python and PostgreSQL.</p>
+  <nav class="toc" aria-label="Seções">
+    <a href="#sobre"><span data-l="pt">Sobre</span><span data-l="en">About</span></a>
+    <a href="#experiencia"><span data-l="pt">Experiência</span><span data-l="en">Experience</span></a>
+    <a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></a>
+    <a href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a>
+  </nav>
+  <div class="links">
+    <a href="https://github.com/emanuelmfavila" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/emanuelmfavila" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:emanuel.mfavila@gmail.com">E-mail</a>
+  </div>
+  <div class="tools">
+    <button id="lang" type="button" aria-label="Mudar idioma">EN</button>
+    <button id="theme" type="button" aria-label="Mudar tema">◐</button>
+  </div>
+</header>
+
+<main>
+<section id="sobre">
+  <h2><span data-l="pt">Sobre</span><span data-l="en">About</span></h2>
+  <div data-l="pt">
+    <p>Sou desenvolvedor full stack com 1 ano programando sistemas em produção e 3 anos construindo automações e integrações. Comecei automatizando processos no n8n e hoje escrevo o código: APIs REST, webhooks, bancos relacionais e IA aplicada ao negócio.</p>
+    <p>Na Mega Ads, ajudei a construir, em um time de 4 pessoas, a plataforma interna que substituiu ClickUp, Pipedrive, Typeform, Calendly e Slack em uma agência de 80 pessoas. Uso Claude Code e Codex todos os dias.</p>
+    <p class="muted">Estudo Engenharia Elétrica na UFOP (conclusão em dez/2026), em João Monlevade, MG. Busco vagas remotas de desenvolvedor full stack ou backend.</p>
+  </div>
+  <div data-l="en">
+    <p>I am a full stack developer with 1 year coding production systems and 3 years building automations and integrations. I started automating processes in n8n and now I write the code: REST APIs, webhooks, relational databases and AI applied to the business.</p>
+    <p>At Mega Ads, I helped build, in a team of 4, the internal platform that replaced ClickUp, Pipedrive, Typeform, Calendly and Slack for an 80-person agency. I use Claude Code and Codex every day.</p>
+    <p class="muted">Electrical Engineering student at UFOP (graduating Dec 2026), based in João Monlevade, Brazil. Looking for remote full stack or backend roles.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>732</b><span data-l="pt">commits meus no Mega Interno</span><span data-l="en">my commits on Mega Interno</span></div>
+    <div class="stat"><b>5</b><span data-l="pt">ferramentas pagas substituídas</span><span data-l="en">paid tools replaced</span></div>
+    <div class="stat"><b>~US$ 29 mil</b><span data-l="pt">por ano em licenças (estimativa)</span><span data-l="en">per year in licenses (estimate)</span></div>
+  </div>
+</section>
+
+<section id="experiencia">
+  <h2><span data-l="pt">Experiência</span><span data-l="en">Experience</span></h2>
+
+  <div class="job">
+    <div class="when">2024 - <span data-l="pt">hoje</span><span data-l="en">now</span></div>
+    <div>
+      <h3><span data-l="pt">Desenvolvedor Full Stack / Gerente de Automação</span><span data-l="en">Full Stack Developer / Automation Manager</span> <small>· Mega Ads</small></h3>
+      <ul data-l="pt">
+        <li>Plataforma interna (Mega Interno) que substituiu ClickUp, Pipedrive, Typeform, Calendly e Slack.</li>
+        <li>Ciclo do cliente automatizado: contrato com assinatura digital, grupo de WhatsApp, onboarding, cobrança e inadimplência.</li>
+        <li>Financeiro integrado ao Asaas por webhook, comissões, dashboards e relatórios de Meta Ads e Google Ads.</li>
+      </ul>
+      <ul data-l="en">
+        <li>Internal platform (Mega Interno) that replaced ClickUp, Pipedrive, Typeform, Calendly and Slack.</li>
+        <li>Automated client lifecycle: e-signed contracts, WhatsApp groups, onboarding, billing and delinquency.</li>
+        <li>Billing integrated with Asaas via webhooks, commissions, dashboards and Meta Ads / Google Ads reports.</li>
+      </ul>
+      <div class="chips"><span>TypeScript</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>RabbitMQ</span><span>Next.js</span><span>Docker</span><span>GitHub Actions</span><span>Jest</span><span>Playwright</span></div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">2026</div>
+    <div>
+      <h3><span data-l="pt">Head de Tráfego e Automação com IA</span><span data-l="en">Head of Paid Traffic and AI Automation</span> <small>· Clavia</small></h3>
+      <ul data-l="pt">
+        <li>Rastreamento de conversões em campanhas de WhatsApp e Google Ads, do clique até a compra.</li>
+        <li>Relatórios automáticos com Kestra e notebooks Python.</li>
+        <li>ClickUp automatizado com IA: contratos, grupos de WhatsApp e onboarding.</li>
+      </ul>
+      <ul data-l="en">
+        <li>Conversion tracking for WhatsApp and Google Ads campaigns, from click to purchase.</li>
+        <li>Automatic reports with Kestra and Python notebooks.</li>
+        <li>AI-automated ClickUp: contracts, WhatsApp groups and onboarding.</li>
+      </ul>
+      <div class="chips"><span>Python</span><span>Kestra</span><span>Jupyter</span><span>Meta Ads</span><span>Google Ads</span><span>ClickUp API</span></div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">2025</div>
+    <div>
+      <h3><span data-l="pt">Desenvolvedor de Automações e Integrações</span><span data-l="en">Automation and Integrations Developer</span> <small>· Burst Mídia</small></h3>
+      <ul data-l="pt"><li>Fluxos de captação do Typeform ao CRM e ao WhatsApp, com rastreamento de conversões no Meta Ads e no Google Ads.</li></ul>
+      <ul data-l="en"><li>Lead capture flows from Typeform to CRM and WhatsApp, with conversion tracking on Meta Ads and Google Ads.</li></ul>
+      <div class="chips"><span>n8n</span><span>Webhooks</span><span>APIs REST</span><span>Google Tag Manager</span></div>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="when">2022</div>
+    <div>
+      <h3><span data-l="pt">Estagiário de Dados e Automações</span><span data-l="en">Data and Automation Intern</span> <small>· ArcelorMittal</small></h3>
+      <ul data-l="pt"><li>Dashboards e análises no Power BI; sistemas supervisórios (SCADA) e CLPs.</li></ul>
+      <ul data-l="en"><li>Power BI dashboards and analyses; SCADA systems and PLCs.</li></ul>
+      <div class="chips"><span>Power BI</span><span>SCADA</span><span>CLP</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projetos">
+  <h2><span data-l="pt">Projetos</span><span data-l="en">Projects</span></h2>
+
+  <article class="case">
+    <figure class="shot" style="margin:0"><img src="img/mega-interno.jpg" alt="Diagrama do Mega Interno substituindo ClickUp, Pipedrive, Typeform, Calendly e Slack" loading="lazy" data-l="pt"><img src="img/mega-interno.jpg" alt="Diagram of Mega Interno replacing ClickUp, Pipedrive, Typeform, Calendly and Slack" loading="lazy" data-l="en"><figcaption><span data-l="pt">ilustração · código privado</span><span data-l="en">illustration · private code</span></figcaption></figure>
+    <div class="body">
+    <span class="tag"><span data-l="pt">Em produção · time de 4</span><span data-l="en">In production · team of 4</span></span>
+    <h3>Mega Interno</h3>
+    <div class="grid">
+      <div><h4><span data-l="pt">Problema</span><span data-l="en">Problem</span></h4>
+        <p data-l="pt">Uma agência de 80 pessoas pagava cinco ferramentas desconectadas e dependia de integrações frágeis entre elas.</p>
+        <p data-l="en">An 80-person agency paid for five disconnected tools and relied on fragile integrations between them.</p></div>
+      <div><h4><span data-l="pt">O que fizemos</span><span data-l="en">What we built</span></h4>
+        <p data-l="pt">Uma plataforma única: CRM, formulários com rastreamento, agenda, chat, contratos, financeiro, LMS e API pública, com permissões por cargo.</p>
+        <p data-l="en">A single platform: CRM, tracked forms, scheduling, chat, contracts, billing, LMS and public API, with role-based permissions.</p></div>
+      <div><h4><span data-l="pt">Resultado</span><span data-l="en">Result</span></h4>
+        <p data-l="pt">Cinco assinaturas a menos, cerca de US$ 2,4 mil por mês, e os dados da operação num lugar só. Foram 732 commits meus.</p>
+        <p data-l="en">Five fewer subscriptions, about US$ 2.4k per month, and all operational data in one place. 732 commits of mine.</p></div>
+    </div>
+    <div class="chips"><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span><span>Next.js</span><span>Docker</span><span>Fly.io</span><span>GitHub Actions</span></div>
+    <div class="gallery">
+  <h4><span data-l="pt">Por dentro da plataforma</span><span data-l="en">Inside the platform</span></h4>
+  <p class="hint"><span data-l="pt">Telas reais do GrowFirst, a versão SaaS do Mega Interno, rodando com dados 100% fictícios (empresas, CNPJs e e-mails inventados). Clique para ampliar.</span><span data-l="en">Real GrowFirst screens (the SaaS version of Mega Interno) running with 100% fictitious data (made-up companies, tax IDs and emails). Click to enlarge.</span></p>
+  <div class="gal">
+    <button type="button" data-full="img/plataforma/inicio.jpg" data-cap-pt="Painel do colaborador" data-cap-en="Employee dashboard"><img src="img/plataforma/inicio.jpg" alt="Painel do colaborador" loading="lazy"><b><span data-l="pt">Painel do colaborador</span><span data-l="en">Employee dashboard</span></b><small><span data-l="pt">Clientes que a pessoa acompanha, inadimplentes, demandas e agenda do dia.</span><span data-l="en">Accounts each person follows, overdue clients, tasks and today's schedule.</span></small></button>
+    <button type="button" data-full="img/plataforma/clientes.jpg" data-cap-pt="Carteira de clientes" data-cap-en="Client portfolio"><img src="img/plataforma/clientes.jpg" alt="Carteira de clientes" loading="lazy"><b><span data-l="pt">Carteira de clientes</span><span data-l="en">Client portfolio</span></b><small><span data-l="pt">Cards por status (onboarding, ativo, aviso de churn), prioridade, squad, NPS e conexões de Meta, Google, WhatsApp e Asaas.</span><span data-l="en">Cards by status (onboarding, active, churn risk), priority, squad, NPS and Meta, Google, WhatsApp and Asaas connections.</span></small></button>
+    <button type="button" data-full="img/plataforma/cobrancas.jpg" data-cap-pt="Cobranças (Asaas)" data-cap-en="Billing (Asaas)"><img src="img/plataforma/cobrancas.jpg" alt="Cobranças (Asaas)" loading="lazy"><b><span data-l="pt">Cobranças (Asaas)</span><span data-l="en">Billing (Asaas)</span></b><small><span data-l="pt">Espelho do Asaas por webhook: recebido, a receber, pendente e vencido, com assinatura de cada cliente.</span><span data-l="en">Asaas mirror via webhooks: received, upcoming, pending and overdue, with each client's subscription.</span></small></button>
+    <button type="button" data-full="img/plataforma/indicadores.jpg" data-cap-pt="Indicadores" data-cap-en="Metrics"><img src="img/plataforma/indicadores.jpg" alt="Indicadores" loading="lazy"><b><span data-l="pt">Indicadores</span><span data-l="en">Metrics</span></b><small><span data-l="pt">MRR, LTV, inadimplência, tempo de onboarding, NPS e cohort, calculados dos dados reais da operação.</span><span data-l="en">MRR, LTV, delinquency, onboarding time, NPS and cohorts, computed from operational data.</span></small></button>
+    <button type="button" data-full="img/plataforma/contabil.jpg" data-cap-pt="Contábil" data-cap-en="Accounting"><img src="img/plataforma/contabil.jpg" alt="Contábil" loading="lazy"><b><span data-l="pt">Contábil</span><span data-l="en">Accounting</span></b><small><span data-l="pt">Importação de extrato OFX com lançamento em partidas dobradas, balancete, DRE, DFC, folha e comissões.</span><span data-l="en">OFX statement import with double-entry bookkeeping, trial balance, P&L, cash flow, payroll and commissions.</span></small></button>
+    <button type="button" data-full="img/plataforma/rh.jpg" data-cap-pt="RH" data-cap-en="HR"><img src="img/plataforma/rh.jpg" alt="RH" loading="lazy"><b><span data-l="pt">RH</span><span data-l="en">HR</span></b><small><span data-l="pt">Admissão e desligamento, colaboradores, recrutamento e seleção, banco de talentos, feedbacks e formulários.</span><span data-l="en">Hiring and offboarding, employees, recruiting, talent pool, feedback and forms.</span></small></button>
+    <button type="button" data-full="img/plataforma/treinamentos.jpg" data-cap-pt="Treinamentos (LMS)" data-cap-en="Training (LMS)"><img src="img/plataforma/treinamentos.jpg" alt="Treinamentos (LMS)" loading="lazy"><b><span data-l="pt">Treinamentos (LMS)</span><span data-l="en">Training (LMS)</span></b><small><span data-l="pt">Cursos com vídeo, progresso por aula, anotações e liberação por pessoa ou cliente.</span><span data-l="en">Video courses, per-lesson progress, notes and per-person or per-client access.</span></small></button>
+  </div>
+</div>
+    <p class="note" data-l="pt">Estimativa com preços de tabela anuais: Slack Pro e ClickUp Business para 80 pessoas, Pipedrive Growth e Calendly Teams para 15 do comercial e Typeform Business. Código privado da empresa.</p>
+    <p class="note" data-l="en">Estimate using annual list prices: Slack Pro and ClickUp Business for 80 people, Pipedrive Growth and Calendly Teams for 15 sales seats, and Typeform Business. Private company code.</p>
+  </div>
+  </article>
+
+  <article class="case">
+    <figure class="shot" style="margin:0"><img src="img/growfirst.jpg" alt="Diagrama da arquitetura multi-tenant do GrowFirst" loading="lazy" data-l="pt"><img src="img/growfirst.jpg" alt="GrowFirst multi-tenant architecture diagram" loading="lazy" data-l="en"><figcaption><span data-l="pt">ilustração · código privado</span><span data-l="en">illustration · private code</span></figcaption></figure>
+    <div class="body">
+    <span class="tag"><span data-l="pt">SaaS · projeto pessoal</span><span data-l="en">SaaS · personal project</span></span>
+    <h3>GrowFirst</h3>
+    <div class="grid">
+      <div><h4><span data-l="pt">Problema</span><span data-l="en">Problem</span></h4>
+        <p data-l="pt">Outras agências tinham as mesmas dores, mas o sistema foi feito para uma empresa só.</p>
+        <p data-l="en">Other agencies had the same pain points, but the system was built for a single company.</p></div>
+      <div><h4><span data-l="pt">O que fiz</span><span data-l="en">What I built</span></h4>
+        <p data-l="pt">Versão multi-tenant: isolamento de dados por organização, integrações cifradas por cliente e sincronização controlada com o sistema original.</p>
+        <p data-l="en">A multi-tenant version: per-organization data isolation, encrypted per-tenant integrations and controlled sync with the original system.</p></div>
+      <div><h4><span data-l="pt">Resultado</span><span data-l="en">Result</span></h4>
+        <p data-l="pt">Plataforma em produção em app.growfirst.com.br, com 814 commits meus e deploy contínuo.</p>
+        <p data-l="en">Platform live at app.growfirst.com.br, with 814 commits of mine and continuous deployment.</p></div>
+    </div>
+    <div class="chips"><span>TypeScript</span><span>NestJS</span><span>Prisma</span><span>PostgreSQL</span><span>Multi-tenant</span><span>Docker</span><span>CI/CD</span></div>
+  </div>
+  </article>
+
+  <article class="case">
+    <figure class="shot" style="margin:0"><img src="img/clavia.jpg" alt="Tela de biblioteca salva da Clavia com anunciantes de implantodontia" loading="lazy" data-l="pt"><img src="img/clavia.jpg" alt="Clavia saved library screen with dental implant advertisers" loading="lazy" data-l="en"><figcaption><span data-l="pt">print real · nomes trocados por fictícios</span><span data-l="en">real screenshot · names replaced with fictitious ones</span></figcaption></figure>
+    <div class="body">
+    <span class="tag"><span data-l="pt">Python · dados</span><span data-l="en">Python · data</span></span>
+    <h3>Clavia</h3>
+    <div class="grid">
+      <div><h4><span data-l="pt">Problema</span><span data-l="en">Problem</span></h4>
+        <p data-l="pt">Gestores de tráfego para médicos perdiam horas descobrindo quem já anuncia no nicho e o que funciona.</p>
+        <p data-l="en">Ad managers for doctors spent hours finding who already advertises in a niche and what works.</p></div>
+      <div><h4><span data-l="pt">O que fiz</span><span data-l="en">What I built</span></h4>
+        <p data-l="pt">API em FastAPI que coleta anúncios com Playwright em 210 nichos, mostra os criativos que estão no ar há semanas e gera peças a partir deles.</p>
+        <p data-l="en">A FastAPI service that collects ads with Playwright across 210 niches, surfaces long-running creatives and generates assets from them.</p></div>
+      <div><h4><span data-l="pt">Resultado</span><span data-l="en">Result</span></h4>
+        <p data-l="pt">Frontend publicado na Vercel e API no Railway, com login por Google ou senha.</p>
+        <p data-l="en">Frontend deployed on Vercel and API on Railway, with Google or password login.</p></div>
+    </div>
+    <div class="chips"><span>Python</span><span>FastAPI</span><span>Playwright</span><span>Next.js</span><span>Vercel</span><span>Railway</span></div>
+  </div>
+  </article>
+
+  <article class="case">
+    <figure class="shot" style="margin:0"><img src="img/malha-ev.jpg" alt="Simulador Malha EV com carros elétricos rodando na malha" loading="lazy" data-l="pt"><img src="img/malha-ev.jpg" alt="Malha EV simulator with electric cars running on the network" loading="lazy" data-l="en"><figcaption><span data-l="pt">print real</span><span data-l="en">real screenshot</span></figcaption></figure>
+    <div class="body">
+    <span class="tag"><span data-l="pt">TCC · simulação</span><span data-l="en">Thesis · simulation</span></span>
+    <h3>Malha EV</h3>
+    <div class="grid">
+      <div><h4><span data-l="pt">Problema</span><span data-l="en">Problem</span></h4>
+        <p data-l="pt">Como a quantidade de postos afeta viagens de carros elétricos numa malha de cidades?</p>
+        <p data-l="en">How does the number of charging stations affect electric car trips across a network of cities?</p></div>
+      <div><h4><span data-l="pt">O que fiz</span><span data-l="en">What I built</span></h4>
+        <p data-l="pt">Simulador visual com Dijkstra e A*, filas nos postos, painel que explica cada decisão e ensaios em lote exportados em CSV.</p>
+        <p data-l="en">A visual simulator with Dijkstra and A*, station queues, a panel that explains every decision and batch experiments exported to CSV.</p></div>
+      <div><h4><span data-l="pt">Resultado</span><span data-l="en">Result</span></h4>
+        <p data-l="pt">Núcleo em TypeScript puro coberto por 61 testes, usado nos ensaios do TCC no corredor Sudeste.</p>
+        <p data-l="en">Pure TypeScript core covered by 61 tests, used in the thesis experiments on the Southeast corridor.</p></div>
+    </div>
+    <div class="chips"><span>TypeScript</span><span>Next.js</span><span>React</span><span>Zustand</span><span>Vitest</span></div>
+  </div>
+  </article>
+
+  <article class="case">
+    <figure class="shot" style="margin:0"><img src="img/micro-quest.jpg" alt="Tela inicial do Micro Quest com unidades de estudo" loading="lazy" data-l="pt"><img src="img/micro-quest.jpg" alt="Micro Quest home screen with study units" loading="lazy" data-l="en"><figcaption><span data-l="pt">print real</span><span data-l="en">real screenshot</span></figcaption></figure>
+    <div class="body">
+    <span class="tag"><span data-l="pt">Educação · IA</span><span data-l="en">Education · AI</span></span>
+    <h3>Micro Quest</h3>
+    <p data-l="pt" class="muted" style="margin-top:8px">Jogo de estudo no estilo Duolingo para Microprocessadores (ARM Cortex-M3 / STM32F103): 192 questões, Coach IA que analisa os erros e cria questões sob medida, guia visual, XP, combos e memória de erros. Feito em HTML, CSS e JavaScript.</p>
+    <p data-l="en" class="muted" style="margin-top:8px">A Duolingo-style study game for Microprocessors (ARM Cortex-M3 / STM32F103): 192 questions, an AI coach that analyzes mistakes and generates tailored questions, visual guide, XP, combos and mistake memory. Built with HTML, CSS and JavaScript.</p>
+    <div class="chips"><span>JavaScript</span><span>HTML</span><span>CSS</span></div>
+  </div>
+  </article>
+</section>
+
+<section id="contato">
+  <h2><span data-l="pt">Contato</span><span data-l="en">Contact</span></h2>
+  <div class="contact">
+    <p data-l="pt">Procurando alguém que escreva código e entenda o processo do negócio? Vamos conversar.</p>
+    <p data-l="en">Looking for someone who writes code and understands the business process? Let's talk.</p>
+    <a class="btn" href="mailto:emanuel.mfavila@gmail.com">emanuel.mfavila@gmail.com</a>
+  </div>
+</section>
+</main>
+<dialog class="lb" id="lb"><img alt=""><p></p></dialog>
+</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  var lang=get('lang')||((navigator.language||'pt').toLowerCase().indexOf('pt')===0?'pt-BR':'en');
+  var theme=get('theme');
+  function apply(){
+    root.lang=lang; document.getElementById('lang').textContent=lang==='en'?'PT':'EN';
+    if(theme) root.setAttribute('data-theme',theme);
+  }
+  apply();
+  document.getElementById('lang').onclick=function(){lang=lang==='en'?'pt-BR':'en';set('lang',lang);apply()};
+  document.getElementById('theme').onclick=function(){
+    var dark=theme?theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    theme=dark?'light':'dark';set('theme',theme);apply();
+  };
+  var lb=document.getElementById('lb');
+  document.querySelectorAll('.gal button').forEach(function(b){b.addEventListener('click',function(){
+    lb.querySelector('img').src=b.getAttribute('data-full');
+    var cap=root.lang==='en'?b.getAttribute('data-cap-en'):b.getAttribute('data-cap-pt');
+    lb.querySelector('img').alt=cap; lb.querySelector('p').textContent=cap;
+    if(lb.showModal) lb.showModal();
+  })});
+  lb.addEventListener('click',function(){lb.close()});
+  var links=[].slice.call(document.querySelectorAll('nav.toc a'));
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('main section').forEach(function(s){io.observe(s)});
+})();
+</script>
+</body>
+</html>
